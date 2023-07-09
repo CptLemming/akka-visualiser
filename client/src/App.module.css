@@ -1,0 +1,96 @@
+.App {
+  display: grid;
+  grid-template-rows: min-content min-content 1fr;
+  grid-template-columns: 400px 1fr;
+  column-gap: 12px;
+  grid-template-areas:
+    "controls controls"
+    "events actors"
+    "events messages";
+}
+
+.controls {
+  grid-area: controls;
+  background-color: #123456;
+  padding: 9px;
+  gap: 6px;
+}
+
+.controls__inner {
+  overflow: auto;
+  display: flex;
+}
+
+.actors {
+  grid-area: actors;
+}
+
+.messages {
+  grid-area: messages;
+  display: flex;
+  flex-direction: column;
+}
+
+.events {
+  grid-area: events;
+}
+
+.controls__control, .actors__list_item__select {
+  cursor: pointer;
+}
+
+.controls__control {
+  background-color: white;
+  width: 24px;
+  height: 24px;
+  font-size: 0.6em;
+  border: unset;
+}
+
+.controls__control:hover {
+  background-color: rgb(227, 227, 227);
+}
+
+[data-selected="true"].controls__control {
+  background-color: rgb(0, 255, 242);
+}
+
+.actors__list, .events__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.actors__list_item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.actors__list_item > p, .events__list_item > p, .messages__list_item > p {
+  margin: unset;
+}
+
+.actors__list_item__select {
+  position: relative;
+  background-color: rgb(211, 211, 211);
+  border: unset;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+[data-state="STARTED"].actors__list_item__select {
+  background-color: rgb(40, 192, 40);
+}
+
+[data-selected="true"].actors__list_item__select::after {
+  content: "";
+  position: absolute;
+  outline: 3px solid rgb(43, 170, 255);
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

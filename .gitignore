@@ -1,0 +1,7 @@
+# Project cache
+.gradle
+.bloop
+.metals
+
+# Build cache
+build

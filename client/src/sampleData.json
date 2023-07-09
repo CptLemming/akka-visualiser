@@ -1,0 +1,177 @@
+[
+  {
+    "type": "ACTOR_START",
+    "timestamp": 19422239479066,
+    "path": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "ACTOR_START",
+    "timestamp": 19422269510975,
+    "path": "akka://root/user/speaker-2"
+  },
+  {
+    "type": "ACTOR_START",
+    "timestamp": 19422271891832,
+    "path": "akka://root/user/speaker-3"
+  },
+  {
+    "type": "ACTOR_START",
+    "timestamp": 19422275190850,
+    "path": "akka://root/user/speaker-4"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20505439696057,
+    "id": 30418294088,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20505461810892,
+    "id": 30418294088,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20505463703284,
+    "id": 30417097312,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20505484061341,
+    "id": 30417097312,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20505484186980,
+    "id": 30418160632,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20505504537242,
+    "id": 30418160632,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20505591028848,
+    "id": 30215389224,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20505611523799,
+    "id": 30215389224,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20505611774347,
+    "id": 30215389288,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20505632200568,
+    "id": 30215389288,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20505632403486,
+    "id": 30215389352,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20505652644790,
+    "id": 30215389352,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20506590845991,
+    "id": 30215396040,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20506611255663,
+    "id": 30215396040,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20506611472641,
+    "id": 30215396104,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20506611212779,
+    "id": 30211574256,
+    "message": "akkaPlayground.Speaker$Stop",
+    "ref": "akka://root/user/speaker-4",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20506615035072,
+    "id": 30211574256,
+    "message": "akkaPlayground.Speaker$Stop",
+    "ref": "akka://root/user/speaker-4"
+  },
+  {
+    "type": "ACTOR_STOP",
+    "timestamp": 20506615035072,
+    "path": "akka://root/user/speaker-4"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20506631941366,
+    "id": 30215396104,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  },
+  {
+    "type": "MESSAGE_BEGIN",
+    "timestamp": 20506632264483,
+    "id": 30215396168,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1",
+    "sender": "akka://root/deadLetters"
+  },
+  {
+    "type": "MESSAGE_END",
+    "timestamp": 20506652549837,
+    "id": 30215396168,
+    "message": "akkaPlayground.Speaker$Speak",
+    "ref": "akka://root/user/speaker-1"
+  }
+]
