@@ -11,6 +11,8 @@ logger.info(f"IN -> {input_folder}")
 logger.info(f"OUT -> {output_folder}")
 
 for in_item in os.listdir(input_folder):
+  if in_item.startswith("."):
+    continue
   logger.info(f"Processing {in_item}")
   with open(os.path.join(output_folder, f"{in_item}.json"), "w") as out_content:
     out_content.write("[\n")
