@@ -24,7 +24,8 @@ const ActorList: Component<Props> = (props) => {
               data-selected={actor.path === props.selectedActor()}
               data-state={actor.state}
             />
-            <p>{actor.path} ({props.messagesBySender().get(actor.path)?.events.length ?? 0} @ {(props.messagesBySender().get(actor.path)?.averageTime ?? 0).toFixed(2)}us)</p>
+            <p>{actor.path} ({props.messagesBySender().get(actor.path)?.events.length ?? 0} @ {(props.messagesBySender().get(actor.path)?.averageTime ?? 0).toFixed(2)}us, {(props.messagesBySender().get(actor.path)?.maxTime ?? 0).toFixed(2)}us)</p>
+            <p>MB: {actor.mailbox} MAX: {actor.maxMailbox}</p>
           </div>
         ))}
       </div>

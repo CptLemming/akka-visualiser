@@ -49,6 +49,22 @@ public class HookMailbox implements MailboxType, ProducesMessageQueue<HookMailbo
 
     @Override
     public Envelope dequeue() {
+      int numMessages = queue.size();
+
+      if (owner.isDefined()) {
+        // System.out.println(owner.get().path() + " -> " + numMessages);
+        EventCollector
+          .get()
+          .log(
+            new ActorMailboxSizeEvent(
+              EventType.ACTOR_MAILBOX_SIZE,
+              System.nanoTime(),
+              owner.get().path().toString(),
+              numMessages
+            )
+          );
+      }
+      
       // System.out.println("HookMailbox :: dequeue");
       Envelope maybe = queue.poll();
 
