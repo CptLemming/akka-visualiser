@@ -4,6 +4,7 @@
 package akkaPlayground;
 
 import akka.actor.typed.ActorSystem;
+import kamon.Kamon;
 
 public class App {
     public String getGreeting() {
@@ -22,7 +23,8 @@ public class App {
 //        ⌊-> speaker-3 LocalActorRef class akka.actor.typed.internal.adapter.ActorAdapter status=2 no children
 //        ⌊-> speaker-4 LocalActorRef class akka.actor.typed.internal.adapter.ActorAdapter status=2 no children
     public static void main(String[] args) {
-        ActorSystem<?> system = ActorSystem.create(RootActor.create(), "root");
+        Kamon.init();
+        ActorSystem<?> system = ActorSystem.create(RootActor.create(), "local");
 
         // system.logConfiguration();
     }

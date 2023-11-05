@@ -26,6 +26,10 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.1.7'
     implementation 'org.openjdk.jol:jol-core:0.10'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+    implementation 'io.kamon:kamon-bundle_2.13:2.4.7'
+    implementation 'io.kamon:kamon-apm-reporter_2.13:2.4.7'
+    implementation 'io.kamon:kamon-akka_2.13:2.5.9'
+    implementation 'io.kamon:kamon-status-page_2.13:2.5.9'
 }
 
 application {

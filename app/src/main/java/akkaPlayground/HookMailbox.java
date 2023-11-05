@@ -8,6 +8,9 @@ import akka.dispatch.MessageQueue;
 import akka.dispatch.ProducesMessageQueue;
 import akkaPlayground.collector.EventCollector;
 import akkaPlayground.events.*;
+import kamon.Kamon;
+import kamon.metric.RangeSampler;
+import kamon.metric.Timer.Started;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,12 +25,20 @@ public class HookMailbox implements MailboxType, ProducesMessageQueue<HookMailbo
   public static class MyMessageQueue implements MessageQueue, MyUnboundedMessageQueueSemantics {
     private final Queue<Envelope> queue = new ConcurrentLinkedQueue<Envelope>();
     private final Option<ActorRef> owner;
+    private final RangeSampler mailboxSize;
+    private final Started actorLifetime;
     private Long startTime = null;
     private Long prevMessageId = null;
     private String prevMessageClassName = null;
 
     public MyMessageQueue(Option<ActorRef> owner) {
       this.owner = owner;
+
+      String actorPath = owner.map(ref -> ref.path().toString()).getOrElse(() -> "user/unknown");
+
+      // Kamon.spanBuilder("actor.typed.started").tag("actor", actorPath).start().finish();
+      this.actorLifetime = Kamon.timer("actor.typed.lifetime").withTag("actor", actorPath).start();
+      this.mailboxSize = Kamon.rangeSampler("actor.typed.mailbox-size").withTag("actor", actorPath);
 
       if (!owner.isEmpty()) {
         EventCollector.get().log(new ActorStartEvent(
@@ -44,6 +55,7 @@ public class HookMailbox implements MailboxType, ProducesMessageQueue<HookMailbo
       // System.out.println("HookMailbox :: enqueue -> "+ receiver.path() + " = "+ handle.message());
       // System.out.println("HookMailbox :: enqueue from "+ handle.sender().path() + " to "+ receiver.path());
       // System.out.println("HookMailbox :: enqueue -> "+ VM.current().addressOf(handle.message()));
+      mailboxSize.increment();
       queue.offer(handle);
     }
 
@@ -71,6 +83,7 @@ public class HookMailbox implements MailboxType, ProducesMessageQueue<HookMailbo
       calcTimer();
 
       if (maybe != null && !owner.isEmpty()) {
+        mailboxSize.decrement();
         long id = VM.current().addressOf(maybe.message());
         // System.out.println("HookMailbox :: dequeue -> "+ VM.current().addressOf(maybe.message()));
         startTimer(id, maybe.message().getClass().getName(), maybe.sender(), owner.get());
@@ -99,6 +112,9 @@ public class HookMailbox implements MailboxType, ProducesMessageQueue<HookMailbo
     @Override
     public void cleanUp(ActorRef owner, MessageQueue deadLetters) {
       // System.out.println("HookMailbox :: cleanUp -> "+ owner.path());
+
+      // Kamon.spanBuilder("actor.typed.stopped").tag("actor", owner.path().toString()).start().finish();
+      actorLifetime.stop();
 
       calcTimer(); // Actor was stopped
 
